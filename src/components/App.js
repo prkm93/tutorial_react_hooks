@@ -1,20 +1,20 @@
-import React from 'react';
-
+import React, {useState} from 'react';
 import ResourceList from './ResourceList';
+import Users from './Users';
 
-class App extends React.Component {
-  state = {
-    resourceName: 'posts'
-  }
+const App = () => {
 
-  render() {
-    return (
-      <React.Fragment>
-        <button onClick={() => this.setState({ resourceName: 'posts' })}>Posts</button>
-        <button onClick={() => this.setState({ resourceName: 'todos' })}>Todos</button>
-        <ResourceList resourceName={this.state.resourceName}/>
-      </React.Fragment>
-    )
-  }
+  const [resources, setResources] = useState('');
+  const [comments, setComments] = useState('');
+  return (
+    <React.Fragment>
+      <button onClick={() => setResources('posts')}>Posts</button>
+      <button onClick={() => setResources('todos')}>Todos</button>
+      <button onClick={() => setComments('users')}>Users</button>
+      <ResourceList resourceName={resources}/>
+      <Users comments={comments}/>
+    </React.Fragment>
+  )
 }
+
 export default App;
